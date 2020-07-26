@@ -24,8 +24,34 @@ singleLinkedList.prototype.insert = function (value) {
     this.size++
 }
 
+singleLinkedList.prototype.remove = function (value) {
+    var currentHead = this.head
+    if (currentHead.data === value) {
+        this.head = currentHead.next
+        this.size--
+    } else {
+        var prev = currentHead
+        while (currentHead.next) {
+            if (currentHead.data == value) {
+                // remove by skipping
+                prev.next = currentHead.next
+                prev = currentHead
+                currentHead = currentHead.next
+                break
+            }
+            prev = currentHead
+            currentHead = currentHead.next
+        }
+        if (currentHead.data == value) {
+            prev.next = null
+        }
+        this.size--
+    }
+}
+
 var s1 = new singleLinkedList()
 s1.insert(20)
 s1.insert(100)
 s1.insert(10)
+s1.remove(100)
 console.log(s1)
