@@ -1,10 +1,10 @@
-
+// single linked list -- each node have reference to the next node
 function singleLinkedListNode(data) {
-    this.data = data
-    this.next = null
+    this.data = data // the value of the linkedlist node
+    this.next = null // is the pointer to another instance
 }
 
-function singleLinkedList(params) {
+function singleLinkedList() {
     this.head = null // the default property of the head is 0
     this.size = 0
 }
@@ -49,9 +49,39 @@ singleLinkedList.prototype.remove = function (value) {
     }
 }
 
+singleLinkedList.prototype.deleteAtHead = function () {
+    let toReturn = null
+
+    if (this.head !== null) {
+        toReturn = this.head.data
+        if (this.tail === this.head) {
+            this.head = null
+            this.tail = null
+        } else {
+            this.head = this.head.next
+            this.head.prev = null
+        }
+    }
+    this.size--
+    return toReturn
+}
+
+singleLinkedList.prototype.find = function (value) {
+    let currentHead = this.head
+    while(currentHead.next) {
+        if (currentHead.data == value) {
+            return true
+        }
+        currentHead = currentHead.next
+    }
+    return false
+}
+
 var s1 = new singleLinkedList()
-s1.insert(20)
+s1.insert(200)
 s1.insert(100)
 s1.insert(10)
-s1.remove(100)
-console.log(s1)
+s1.insert(1000)
+// s1.deleteAtHead()
+// s1.find(300)
+console.log(s1.isEmpty())
