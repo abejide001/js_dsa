@@ -23,6 +23,15 @@ Stack.prototype.peek = function() {
 Stack.prototype.push = function(value) {
     this.array.push(value)
 }
+
+Stack.prototype.pop = function() {
+    this.array.pop()
+}
+
+Stack.prototype.size = function() {
+    return this.array.length
+}
 let stack1 = new Stack([1,2,3,4,5])
 stack1.push(20)
-console.log(stack1.getBuffer())
+stack1.pop()
+console.log(stack1.size())
