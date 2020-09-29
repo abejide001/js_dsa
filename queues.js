@@ -22,9 +22,30 @@ class Queue {
         this.count--
         return first
     }
+
+    peek() {
+        if (this.count === 0) {
+            return ""
+        }
+        return this.items[this.lowestCount]
+    }
+
+    toString() {
+        if (this.count === 0) {
+            return ""
+        }
+        let objString = `${this.items[this.lowestCount]}`
+
+        for (let i = this.lowestCount + 1; i <= this.count; i++) {
+            objString = `${objString}, ${this.items[i]}`
+        }
+        return objString;
+    }
 }
 const n = new Queue()
 n.enqueue(1)
 n.enqueue(10)
+n.enqueue(100)
 n.dequeue()
-console.log(n)
+n.dequeue()
+console.log(n.toString())
