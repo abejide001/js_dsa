@@ -1,5 +1,5 @@
 
-let name = "James was a good boyo"
+let name = "Jmes was a good boyo"
 let pos = name.indexOf("a")
 let count = 0
 
